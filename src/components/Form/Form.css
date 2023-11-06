@@ -89,7 +89,7 @@
 }
 
 .form__submit-text-link:hover {
-  opacity: .8;
+  opacity: .7;
 }
 
 @media (max-width: 620px) {
