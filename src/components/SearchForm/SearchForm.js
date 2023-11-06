@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import ('./SearchForm.css');
 
 function SearchForm() {
@@ -6,12 +8,18 @@ function SearchForm() {
     e.preventDefault();
   }
 
+  const [focused, setFocused] = useState(false);
+  const onFocus = () => setFocused(true);
+  const onBlur = () => setFocused(false);
+
   return (
     <section className="search" aria-label="Форма для поиска фильмов">
       <div className="search__container">
-        <form className="search__form" onSubmit={handleSubmitForm}>
+        <form className={`search__form ${focused ? "search__form_active" : ""}`}
+          onSubmit={handleSubmitForm} onFocus={onFocus} onBlur={onBlur}
+        >
 
-            <div className="search__form-main">
+            <div className={`search__form-main ${focused ? "search__form-main_active" : ""}`}>
 
               <div className="search__form-input-container">
                   <input
