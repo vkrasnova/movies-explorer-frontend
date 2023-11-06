@@ -53,7 +53,7 @@ const Profile = () => {
     <section className="profile" aria-label="Профиль пользователя">
       <div className="profile__container">
         <h1 className="profile__greeting">
-          Привет, Виталий!
+          Привет, {currentUser.name}!
         </h1>
         <form className="profile__info" onSubmit={handleSubmitForm} isValid={isValid}>
           <div className={profileFieldsClassName}>
