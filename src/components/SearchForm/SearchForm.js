@@ -29,7 +29,7 @@ function SearchForm() {
                   />
                 </div>
 
-              <button type="submit" className="search__form-button" />
+              <button type="submit" className="search__form-btn" />
 
             </div>
 

@@ -55,7 +55,7 @@
   font-weight: 400;
   text-decoration: none;
   cursor: pointer;
-  transition: all .3s ease-in;
+  transition: all .2s ease-in;
 }
 
 .footer__link:hover {

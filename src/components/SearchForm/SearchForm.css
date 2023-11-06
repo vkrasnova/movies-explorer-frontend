@@ -73,7 +73,7 @@
   line-height: 1.11;
 }
 
-.search__form-button {
+.search__form-btn {
   padding: 0;
   width: 34px;
   height: 34px;
@@ -88,7 +88,7 @@
   transition: all .2s ease-in;
 }
 
-.search__form-button:hover {
+.search__form-btn:hover {
   opacity: .7;
 }
 
