@@ -70,7 +70,7 @@ const Register = () => {
         </Form>
 
       </div>
-      </section>
+    </section>
   );
 }
 
