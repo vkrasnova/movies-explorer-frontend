@@ -33,6 +33,15 @@ const Profile = () => {
     setpProfileIsEditing(!profileIsEditing);
   }
 
+  const profileFieldsClassName = (
+    `profile__info-fields
+      ${profileIsEditing
+        ? 'profile__info-fields_active'
+        : ''
+      }
+    `
+  );
+
   useEffect(() => {
     setValues({
       name: currentUser.name,
@@ -47,7 +56,7 @@ const Profile = () => {
           Привет, Виталий!
         </h1>
         <form className="profile__info" onSubmit={handleSubmitForm} isValid={isValid}>
-          <div className="profile__info-fields">
+          <div className={profileFieldsClassName}>
             <div className="profile__info-field">
               <label
                 for="name"
@@ -105,18 +114,18 @@ const Profile = () => {
                 </div>
               :
                 <ul className="profile__options">
-                <li
-                  className="profile__options-item"
-                  onClick={handleEditProfileClick}
-                >
-                  Редактировать
-                </li>
-                <li
-                  className="profile__options-item profile__options-item_color_red"
-                  onClick={handleSignOutClick}
-                >
-                  Выйти из аккаунта
-                </li>
+                  <li
+                    className="profile__options-item"
+                    onClick={handleEditProfileClick}
+                  >
+                    Редактировать
+                  </li>
+                  <li
+                    className="profile__options-item profile__options-item_color_red"
+                    onClick={handleSignOutClick}
+                  >
+                    Выйти из аккаунта
+                  </li>
               </ul>
             }
           </div>
