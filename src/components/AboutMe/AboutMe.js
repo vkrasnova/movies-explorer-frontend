@@ -1,5 +1,6 @@
 import Portfolio from '../Portfolio/Portfolio';
 import photo from '../../images/student-photo.jpg';
+import { Link } from 'react-router-dom';
 import ('./AboutMe.css');
 
 const AboutMe = () => {
@@ -19,7 +20,7 @@ const AboutMe = () => {
                   <h4 className="about-me__description">Фронтенд-разработчик, 30 лет</h4>
                   <p className="about-me__details">Я родилась и живу в Сочи, закончила ФТМИ НИУ ИТМО. Люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начала кодить. С 2016 года занимаюсь предпринимательством в сфере бухгалтерских услуг. После того, как закончу курс по веб-разработке, планирую сменить род деятельности.</p>
                 </div>
-                <a href="https://github.com/vkrasnova" className="about-me__link" target="_blank" rel="noopener noreferrer">Github</a>
+                <Link to="https://github.com/vkrasnova" className="about-me__link" target="_blank" rel="noopener noreferrer">Github</Link>
               </div>
 
               <img src={photo} alt="Фото студента" className="about-me__image" />

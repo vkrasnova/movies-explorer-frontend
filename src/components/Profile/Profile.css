@@ -156,6 +156,9 @@
 }
 
 .profile__options-item {
+  padding: 0;
+  border: none;
+  background: none;
   color: #000;
   font-size: 13px;
   font-weight: 400;

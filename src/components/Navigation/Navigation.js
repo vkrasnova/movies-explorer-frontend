@@ -42,7 +42,11 @@ const Navigation = () => {
 
           </div>
 
-          <NavLink to="/profile" className="navigation__btn navigation__btn_type_profile" onClick={handleOpenCloseMenu}>Аккаунт</NavLink>
+          <NavLink to="/profile">
+            <button className="navigation__btn navigation__btn_type_profile" onClick={handleOpenCloseMenu}>
+              Аккаунт
+            </button>
+          </NavLink>
 
           <button className="navigation__close-btn" aria-label="Закрыть меню" onClick={handleOpenCloseMenu}/>
 

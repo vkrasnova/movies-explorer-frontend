@@ -52,11 +52,15 @@ const Profile = () => {
   return (
     <section className="profile" aria-label="Профиль пользователя">
       <div className="profile__container">
+
         <h1 className="profile__greeting">
           Привет, {currentUser.name}!
         </h1>
+
         <form className="profile__info" onSubmit={handleSubmitForm} isValid={isValid}>
+
           <div className={profileFieldsClassName}>
+
             <div className="profile__info-field">
               <label
                 for="name"
@@ -78,6 +82,7 @@ const Profile = () => {
                 required
               />
             </div>
+
             <div className="profile__info-field">
               <label
                 for="email"
@@ -100,7 +105,9 @@ const Profile = () => {
               />
 
             </div>
+
           </div>
+
           <div className="profile__info-btns">
             {profileIsEditing
               ?
@@ -114,22 +121,26 @@ const Profile = () => {
                 </div>
               :
                 <ul className="profile__options">
-                  <li
-                    className="profile__options-item"
-                    onClick={handleEditProfileClick}
-                  >
-                    Редактировать
+                  <li>
+                    <button className="profile__options-item"
+                      onClick={handleEditProfileClick}>
+                        Редактировать
+                    </button>
                   </li>
-                  <li
-                    className="profile__options-item profile__options-item_color_red"
-                    onClick={handleSignOutClick}
-                  >
-                    Выйти из аккаунта
+
+                  <li>
+                    <button className="profile__options-item profile__options-item_color_red"
+                      onClick={handleSignOutClick}>
+                        Выйти из аккаунта
+                    </button>
+                    
                   </li>
               </ul>
             }
           </div>
+
         </form>
+
       </div>
     </section>
   );
