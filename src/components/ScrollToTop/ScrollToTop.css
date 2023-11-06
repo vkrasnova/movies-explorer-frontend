@@ -1,0 +1,42 @@
+.scroll-to-top {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 30px;
+  bottom: 40px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 5px;
+  background-color: #DDDEE3;
+  background-image: url('../../images/arrow-to-top-black.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 12px 6px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .2s ease-in;
+}
+  
+.scroll-to-top_visible {
+  opacity: .3;
+  visibility: visible;
+}
+
+.scroll-to-top_visible:hover {
+  background-color: #3456F3;
+  background-image: url('../../images/arrow-to-top-white.svg');
+  opacity: 1;
+}
+
+@media (max-width: 620px) {
+
+  .scroll-to-top {
+    right: 10px;
+    bottom: 10px;
+  }
+
+}

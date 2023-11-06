@@ -1,0 +1,23 @@
+.register {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  background: #fafafa;
+  color: #000;
+}
+
+.register__container {
+  display: flex;
+  margin: 70px;
+  width: 100%;
+  max-width: 396px;
+}
+
+@media (max-width: 620px) {
+
+  .register__container {
+    margin: 56px 30px 30px;
+  }
+
+}

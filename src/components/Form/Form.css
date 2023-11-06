@@ -1,0 +1,139 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  background: #fafafa;
+  color: #000;
+  width: 100%;
+  row-gap: 40px;
+  box-sizing: border-box;
+}
+
+.form__header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.form__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  row-gap: 26px;
+  max-height: 413px;
+}
+
+.form__title {
+  display: block;
+  color: #000;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  width: 100%;
+}
+
+.form__inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  flex-grow: 1;
+}
+
+.form__submit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+  width: 100%;
+}
+
+.form__submit-btn {
+  width: 100%;
+  padding: 14px;
+  min-height: 45px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #3456F3;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+
+.form__submit-btn:hover {
+  background: rgba(52, 86, 243, .8);
+}
+
+.form__submit-btn:disabled {
+  color: #C2C2C2;
+  background: #F8F8F8;
+  pointer-events: none;
+}
+
+.form__submit-text {
+  margin: 0;
+  color: #A0A0A0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.form__submit-text-link {
+  color: #3456F3;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+
+.form__submit-text-link:hover {
+  opacity: .8;
+}
+
+@media (max-width: 620px) {
+
+  .form {
+    row-gap: 80px;
+  }
+
+  .form__form {
+    min-height: 0;
+  }
+
+}
+
+@media (max-width: 360px) {
+
+  .form__header {
+    align-items: center;
+    row-gap: 50px;
+  }
+
+  .form__title {
+    text-align: center;
+  }
+
+  .form__form {
+    max-height: 100%;
+  }
+
+  .form__submit-container {
+    row-gap: 14px;
+  }
+
+  .form__submit-btn {
+    font-size: 12px;
+    padding: 16px;
+  }
+
+  .form__submit-text {
+    font-size: 12px;
+  }
+  
+  .form__submit-text_link {
+    font-size: 12px;
+  }
+
+}
