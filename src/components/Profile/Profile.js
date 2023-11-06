@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Input from '../Input/Input';
 import useAuth from '../../hooks/useAuth';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
@@ -8,11 +9,8 @@ import './Profile.css';
 const Profile = () => {
 
   const { currentUser, setCurrentUser, setIsLoggedIn } = useAuth();
-
   const { values, setValues, handleChange, isValid } = useFormWithValidation();
-
   const [ profileIsEditing, setpProfileIsEditing ] = useState();
-
   const navigate = useNavigate();
 
   const handleSignOutClick = () => {
@@ -61,50 +59,33 @@ const Profile = () => {
 
           <div className={profileFieldsClassName}>
 
-            <div className="profile__info-field">
-              <label
-                for="name"
-                className="profile__input-label"
-              >
-                Имя
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                className="profile__input"
-                value={values.name || ''}
-                placeholder="Введите Ваше имя"
-                minLength="2"
-                maxLength="64"
-                onChange={handleChange}
-                disabled={!profileIsEditing}
-                required
-              />
-            </div>
-
-            <div className="profile__info-field">
-              <label
-                for="email"
-                className="profile__input-label"
-              >
-                E-mail
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="profile__input"
-                value={values.email || ''}
-                placeholder="Введите Ваш email"
-                minLength="5"
-                maxLength="64"
-                onChange={handleChange}
-                disabled={!profileIsEditing}
-                required
-              />
-
-            </div>
+            <Input
+              styleCSS="profile"
+              type="text"
+              name="name"
+              label="Имя"
+              placeholder="Введите Ваше имя"
+              value={values.name || ''}
+              minLength="2"
+              maxLength="64"
+              onChange={handleChange}
+              disabled={!profileIsEditing}
+              required
+            />
+            
+            <Input
+              styleCSS="profile"
+              type="email"
+              name="email"
+              label="E-mail"
+              placeholder="Введите Ваш email"
+              value={values.email || ''}
+              minLength="5"
+              maxLength="64"
+              onChange={handleChange}
+              disabled={!profileIsEditing}
+              required
+            />
 
           </div>
 

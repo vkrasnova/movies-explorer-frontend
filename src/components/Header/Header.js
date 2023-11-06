@@ -14,8 +14,8 @@ const Header = () => {
   const headerClassName = (
     `header
       ${(locationPath === '/')
-      ? 'header_color_secondary'
-      : ''}`
+        ? 'header_color_secondary'
+        : ''}`
   );
 
   return (
