@@ -1,22 +1,39 @@
 import './Input.css';
 
-const Input = (props) => {
+const Input = ({
+
+  type,
+  name,
+  label,
+  placeholder,
+  value,
+  minLength,
+  maxLength,
+  error,
+  onChange,
+  required
+
+}) => {
   return (
     <div className="input">
       <label
         className="input__label">
-          {props.label}
+          {label}
       </label>
       <input
         className="input__field"
-        type={props.type || 'text'}
-        minLength={props.minLength || 5}
-        maxLength={props.maxLength || 64}
-        {...props}
+        type={type || 'text'}
+        name={name}
+        placeholder= {placeholder || ''}
+        value={value}
+        minLength={minLength || 5}
+        maxLength={maxLength || 64}
+        onChange={onChange}
+        required={required}
       />
-      {props.error &&
+      {error &&
         <span className="input__error">
-          {props.error}
+          {error}
         </span>}
     </div>
   )
