@@ -29,15 +29,11 @@
   color: #A0A0A0;
 }
 
-.input__field:focus {
-  border-bottom: 1px solid #3456F3;
-}
-
 .input__field:invalid {
   color: #EE3465;
 }
 
-.input__field:focus:invalid {
+.input__field:invalid:focus {
   border-bottom: 1px solid #EE3465;
 }
 
