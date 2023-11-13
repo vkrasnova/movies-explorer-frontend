@@ -1,29 +1,29 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { mainApi } from '../../utils/Api/mainApi';
 import Input from '../Input/Input';
 import useAuth from '../../hooks/useAuth';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 import './Profile.css';
 
-const Profile = () => {
+const Profile = ({ onSignOut }) => {
 
-  const { currentUser, setCurrentUser, setIsLoggedIn } = useAuth();
+  const { currentUser, setCurrentUser } = useAuth();
   const { values, setValues, handleChange, isValid } = useFormWithValidation();
   const [ profileIsEditing, setpProfileIsEditing ] = useState();
-  const navigate = useNavigate();
-
-  const handleSignOutClick = () => {
-    setIsLoggedIn(false);
-    navigate('/')
-  }
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    setCurrentUser({
-      name: values.name,
-      email: values.email,
-    });
+    mainApi.updateUserInfo(values)
+      .then((res) => {
+        setCurrentUser({
+          name: res.name,
+          email: res.email,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     handleEditProfileClick();
   }
 
@@ -111,7 +111,7 @@ const Profile = () => {
 
                   <li>
                     <button className="profile__options-item profile__options-item_color_red"
-                      onClick={handleSignOutClick}>
+                      onClick={onSignOut}>
                         Выйти из аккаунта
                     </button>
                     
