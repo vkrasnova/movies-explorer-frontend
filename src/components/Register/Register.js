@@ -1,9 +1,10 @@
+import { useEffect } from 'react';
+
 import Form from '../Form/Form';
 import Input from '../Input/Input';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 import './Register.css';
-import { useEffect } from 'react';
 
 const Register = ({ onRegister }) => {
 
