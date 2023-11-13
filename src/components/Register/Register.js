@@ -9,7 +9,6 @@ const Register = ({ onRegister }) => {
 
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
-
   const handleSubmitForm = (e) => {
     e.preventDefault();
     onRegister(values);
