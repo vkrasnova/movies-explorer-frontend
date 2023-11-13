@@ -1,20 +1,23 @@
 import Form from '../Form/Form';
 import Input from '../Input/Input';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
-import { useNavigate } from 'react-router-dom';
 
 import './Register.css';
+import { useEffect } from 'react';
 
-const Register = () => {
+const Register = ({ onRegister }) => {
 
-  const { values, handleChange, errors, isValid } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
-  const navigate = useNavigate();
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    navigate('/');
+    onRegister(values);
   }
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm])
 
   return (
 
@@ -35,12 +38,12 @@ const Register = () => {
 
           <Input
             type="text"
-            name="username"
+            name="name"
             label="Имя"
             placeholder="Введите Ваше имя"
             minLength="2"
-            value={values.username || ''}
-            error={errors.username || ''}
+            value={values.name || ''}
+            error={errors.name || ''}
             onChange={handleChange}
             required
           />
