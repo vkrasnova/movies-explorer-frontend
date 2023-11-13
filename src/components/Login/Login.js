@@ -1,24 +1,23 @@
+import { useEffect } from 'react';
+
 import Form from '../Form/Form';
 import Input from '../Input/Input';
-import useAuth from '../../hooks/useAuth';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
-import { useNavigate } from 'react-router-dom';
 
 import './Login.css';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
 
-  const { setIsLoggedIn } = useAuth();
-
-  const { values, handleChange, errors, isValid } = useFormWithValidation();
-
-  const navigate = useNavigate();
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    setIsLoggedIn(true);
-    navigate('/');
+    onLogin(values);
   }
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm])
 
   return (
     <section className="login" aria-label="Форма для авторизации на сайте">
