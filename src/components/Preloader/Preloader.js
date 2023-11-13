@@ -1,9 +1,9 @@
 import React from 'react';
 import './Preloader.css';
 
-const Preloader = ({ fullScreen }) => {
+const Preloader = ({ styleCSS }) => {
   return (
-    <div className={`preloader ${fullScreen ? 'preloader_fullscreen' : ''}`}>
+    <div className={`preloader preloader_style_${styleCSS}`}>
       <div className="preloader__container">
         <span className="preloader__round"></span>
       </div>
