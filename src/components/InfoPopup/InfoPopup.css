@@ -1,0 +1,65 @@
+.popup {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  min-width: 320px;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .3);
+  transition: all .2s ease-in-out;
+  visibility: hidden;
+  z-index: -1;
+  opacity: 0;
+}
+
+.popup_opened {
+  visibility: visible;
+  z-index: 1;
+  opacity: 1;
+}
+
+.popup__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 54px;
+  max-width: 360px;
+  min-height: 20px;
+  max-height: 50vh;
+  width: 100%;
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+}
+
+.popup__text {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+  overflow: hidden;
+}
+
+.popup__close-btn {
+  padding: 0;
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 20px;
+  height: 20px;
+  background: url(../../images/cross-bold.svg) no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+
+.popup__close-btn:hover {
+  opacity: .7;
+}
