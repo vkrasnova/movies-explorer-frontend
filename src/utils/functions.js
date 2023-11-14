@@ -1,7 +1,7 @@
-export const convertDurationToText = (minutes) => {
-  const movieDurationHours = Math.floor(minutes/60);
-  const movieDurationMinutes = minutes % 60;
-  return `${movieDurationHours} ч. ${movieDurationMinutes} мин.`;
+export const convertDurationToText = (duration) => {
+  const hours = Math.floor(duration/60);
+  const minutes = duration % 60;
+  return `${(hours !== 0) ? hours + ' ч. ' : ''}${minutes} мин.`;
 };
 
 export const filterMoviesByName = (movies, searchQuery) => {
@@ -13,9 +13,9 @@ export const filterMoviesByName = (movies, searchQuery) => {
   );
 };
 
-export const filterMoviesByShortDuration = (movies) => {
+export const filterMoviesByDuration = (movies) => {
   return movies.filter(
     (movie) => 
-      movie.duration < 41
+      movie.duration <= 40
   );
 };
