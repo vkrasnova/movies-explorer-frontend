@@ -3,14 +3,17 @@ import { mainApi } from '../../utils/Api/mainApi';
 import Input from '../Input/Input';
 import useAuth from '../../hooks/useAuth';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
+import { STATUS_MSG } from '../../utils/constants';
 
 import './Profile.css';
 
 const Profile = ({ onSignOut }) => {
 
   const { currentUser, setCurrentUser } = useAuth();
-  const { values, setValues, handleChange, isValid } = useFormWithValidation();
-  const [ profileIsEditing, setpProfileIsEditing ] = useState();
+  const { values, setValues, handleChange, isValid, setIsValid } = useFormWithValidation();
+
+  const [ profileIsEditing, setProfileIsEditing ] = useState();
+  const [ errorMessage, setErrorMessage ] = useState();
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -20,15 +23,25 @@ const Profile = ({ onSignOut }) => {
           name: res.name,
           email: res.email,
         });
+        handleEditProfileClick();
       })
       .catch((err) => {
-        console.log(err);
+        if (err === 400) {
+          setErrorMessage(STATUS_MSG.ERR_INVALID_DATA);
+          setIsValid(false);
+          return;
+        }
+        if (err === 409) {
+          setErrorMessage(STATUS_MSG.ERR_409);
+          setIsValid(false);
+          return;
+        }
+        setErrorMessage(STATUS_MSG.ERR_UPD_PROFILE);
       })
-    handleEditProfileClick();
   }
 
   const handleEditProfileClick = () => {
-    setpProfileIsEditing(!profileIsEditing);
+    setProfileIsEditing(!profileIsEditing);
   }
 
   const profileFieldsClassName = (
@@ -39,6 +52,10 @@ const Profile = ({ onSignOut }) => {
       }
     `
   );
+
+  const hideErrorMessage = () => {
+    setErrorMessage('');
+  }
 
   useEffect(() => {
     setValues({
@@ -57,7 +74,7 @@ const Profile = ({ onSignOut }) => {
 
         <form className="profile__info" onSubmit={handleSubmitForm} isValid={isValid}>
 
-          <div className={profileFieldsClassName}>
+          <div className={profileFieldsClassName} onClick={hideErrorMessage}>
 
             <Input
               styleCSS="profile"
@@ -93,9 +110,11 @@ const Profile = ({ onSignOut }) => {
             {profileIsEditing
               ?
                 <div className="profile__info-submit">
-                  <span className="profile__info-submit-error">
-                    При обновлении профиля произошла ошибка.
-                  </span>
+                  {errorMessage &&
+                    <span className="profile__info-submit-error">
+                      {errorMessage}
+                    </span>
+                  }
                   <button className="profile__info-submit-btn" disabled={!isValid}>
                     Сохранить
                   </button>
@@ -114,7 +133,7 @@ const Profile = ({ onSignOut }) => {
                       onClick={onSignOut}>
                         Выйти из аккаунта
                     </button>
-                    
+
                   </li>
               </ul>
             }
