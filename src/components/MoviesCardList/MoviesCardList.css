@@ -1,6 +1,7 @@
 .movies {
   display: flex;
   justify-content: center;
+  flex-grow: 1;
   width: 100%;
   color: #000;
 }
@@ -19,8 +20,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 270px);
   gap: 32px 20px;
   width: 100%;
   list-style: none;
