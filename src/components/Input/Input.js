@@ -12,9 +12,9 @@ const Input = ({
   maxLength,
   error,
   onChange,
+  pattern,
   disabled,
-  required
-
+  required,
 }) => {
 
   return (
@@ -34,11 +34,12 @@ const Input = ({
         minLength={minLength || 5}
         maxLength={maxLength || 64}
         onChange={onChange}
+        pattern={pattern}
         disabled={disabled}
         required={required}
       />
       {error &&
-        <span className={`input__error input__field_style_${styleCSS}`}>
+        <span className="input__error">
           {error}
         </span>}
     </div>
