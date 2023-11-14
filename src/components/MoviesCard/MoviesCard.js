@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { URL } from '../../utils/constants';
+import { convertDurationToText } from '../../utils/functions';
 
 import ('./MoviesCard.css');
 
@@ -9,14 +10,8 @@ const MoviesCard = ({ movie }) => {
 
   const isBtnTypeDelete = (locationPath === '/saved-movies');
 
-  const movieDurationText = (minutes) => {
-    const movieDurationHours = Math.floor(minutes/60);
-    const movieDurationMinutes = minutes % 60;
-    return `${movieDurationHours} ч. ${movieDurationMinutes} мин.`;
-  }
-
   return (
-    <div className="movie">
+    <li className="movie">
 
       <Link to={movie.trailerLink} className="movie__image-container" target="_blank" rel="noopener noreferrer">
         <img
@@ -46,12 +41,12 @@ const MoviesCard = ({ movie }) => {
         </div>
 
         <span className="movie__duration">
-          {movieDurationText(movie.duration)}
+          {convertDurationToText(movie.duration)}
         </span>
 
       </div>
 
-    </div>
+    </li>
   );
 }
 
