@@ -6,14 +6,14 @@ export const AppProvider = ({ children }) => {
   
   const [isInfoPopupOpened, setIsInfoPopupOpened] = useState(false);
   const [infoPopupText, setInfoPopupText] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [infoPopupType, setInfoPopupType] = useState('');
 
   return (
 
     <AppContext.Provider value={{
       isInfoPopupOpened, setIsInfoPopupOpened,
       infoPopupText, setInfoPopupText,
-      errorMessage, setErrorMessage,
+      infoPopupType, setInfoPopupType,
     }}>
 
         {children}
