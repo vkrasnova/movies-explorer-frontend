@@ -1,5 +1,5 @@
 import Api from './Api';
-import { MAIN_API_URL } from '../../utils/constants';
+import { URL } from '../../utils/constants';
 
 class MainApi extends Api {
 
@@ -60,7 +60,7 @@ class MainApi extends Api {
 }
 
 export const mainApi = new MainApi({
-  url: MAIN_API_URL,
+  url: URL.MAIN_API,
   headers: {
     "Content-Type": "application/json",
   }

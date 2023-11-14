@@ -1,5 +1,5 @@
 import Api from './Api';
-import { MOVIES_API_URL } from '../../utils/constants';
+import { URL } from '../../utils/constants';
 
 class MoviesApi extends Api {
 
@@ -15,7 +15,7 @@ class MoviesApi extends Api {
 }
 
 export const moviesApi = new MoviesApi({
-  url: MOVIES_API_URL,
+  url: URL.MOVIES_API,
   headers: {
     "Content-Type": "application/json",
   }

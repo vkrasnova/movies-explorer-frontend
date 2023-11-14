@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { MOVIES_URL } from '../../utils/constants';
+import { URL } from '../../utils/constants';
 
 import ('./MoviesCard.css');
 
@@ -21,7 +21,7 @@ const MoviesCard = ({ movie }) => {
       <Link to={movie.trailerLink} className="movie__image-container" target="_blank" rel="noopener noreferrer">
         <img
           className="movie__image"
-          src={`${MOVIES_URL}${movie.image.url}`}
+          src={`${URL.MOVIES}${movie.image.url}`}
           alt={`Постер фильма '${movie.nameRU}'`}
         />
       </Link>
