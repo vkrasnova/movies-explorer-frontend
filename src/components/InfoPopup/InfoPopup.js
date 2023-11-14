@@ -1,16 +1,29 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import useAppContext from '../../hooks/useAppContext';
 
 import './InfoPopup.css';
 
-const InfoPopup = ({ isOpened, onClose, text }) => {
+const InfoPopup = () => {
+
+  const {
+    isInfoPopupOpened, setIsInfoPopupOpened,
+    infoPopupText, setInfoPopupText,
+    infoPopupType, setInfoPopupType,
+  } = useAppContext();
+
+  const handleCloseInfoPopup = useCallback(() => {
+    setIsInfoPopupOpened(false);
+    setInfoPopupText('');
+    setInfoPopupType('');
+  }, [setIsInfoPopupOpened, setInfoPopupText, setInfoPopupType])
 
   useEffect(() => {
 
-    if (!isOpened) return;
+    if (!isInfoPopupOpened) return;
 
     const closeByEscape = (e) => {
       if (e.key === 'Escape') {
-        onClose();
+        handleCloseInfoPopup();
       }
     }
 
@@ -18,32 +31,34 @@ const InfoPopup = ({ isOpened, onClose, text }) => {
 
     return () => document.removeEventListener('keydown', closeByEscape);
 
-  }, [isOpened, onClose])
+  }, [isInfoPopupOpened, handleCloseInfoPopup])
 
   const handleOverlay = (e) => {
     if (e.target.classList.contains('popup_opened')) {
-      onClose();
+      handleCloseInfoPopup();
     }
   }
 
   return (
 
     <section
-      className={`popup ${isOpened ? "popup_opened" : ""}`}
+      className={`popup ${isInfoPopupOpened ? "popup_opened" : ""}`}
       aria-label="Окно с информационным сообщением"
       onClick={handleOverlay}
     >
 
       <div className="popup__container">
 
-        <p className="popup__text">{text}</p>
+        {infoPopupType && <span className={`popup__icon popup__icon_type_${infoPopupType}`} />}
 
-      <button
-        type="button"
-        className="popup__close-btn"
-        aria-label="Закрыть окно с информационным сообщением"
-        onClick={onClose}
-      />
+        <p className="popup__text">{infoPopupText}</p>
+
+        <button
+          type="button"
+          className="popup__close-btn"
+          aria-label="Закрыть окно с информационным сообщением"
+          onClick={handleCloseInfoPopup}
+        />
 
       </div>
 

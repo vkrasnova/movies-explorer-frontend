@@ -27,9 +27,11 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  column-gap: 30px;
   padding: 54px;
   max-width: 360px;
-  min-height: 20px;
+  min-height: 35px;
   max-height: 50vh;
   width: 100%;
   background: #fff;
@@ -37,12 +39,32 @@
   box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
 }
 
+.popup__icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background-size: 50px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.popup__icon_type_ok {
+  background-image: url('../../images/status-ok.svg');
+}
+
+.popup__icon_type_error {
+  background-image: url('../../images/status-error.svg');
+}
+
+.popup__icon_type_info {
+  background-image: url('../../images/status-info.svg');
+}
+
 .popup__text {
   padding: 0;
   margin: 0;
   font-size: 14px;
   color: #000;
-  text-align: center;
   overflow: hidden;
 }
 
@@ -62,4 +84,17 @@
 
 .popup__close-btn:hover {
   opacity: .7;
+}
+
+@media (max-width: 360px) {
+
+  .popup__container {
+    padding: 35px 54px;
+    column-gap: 20px;
+  }
+
+  .popup__text {
+    font-size: 12px;
+  }
+
 }
