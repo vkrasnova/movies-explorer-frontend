@@ -89,6 +89,7 @@ const App = () => {
       .then(() => {
         setIsLoggedIn(false);
         setCurrentUser({});
+        localStorage.clear();
         navigate('/', {replace: true});
       })
       .catch(() => {
