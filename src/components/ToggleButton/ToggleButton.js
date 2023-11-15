@@ -9,14 +9,14 @@ const ToggleButton = ({ shortMovies, onClick }) => {
 
   return (
     <label className="toggle">
-    <input
-      className="toggle__checkbox"
-      type="checkbox"
-      checked={shortMovies}
-      onChange={onClick}
-    />
-    <span className="toggle__switch"></span>
-    <span className="toggle__label">Короткометражки</span>
+      <input
+        className="toggle__checkbox"
+        type="checkbox"
+        checked={shortMovies}
+        onChange={onClick}
+      />
+      <span className="toggle__switch"></span>
+      <span className="toggle__label">Короткометражки</span>
   </label>
   )
 };
