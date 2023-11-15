@@ -34,9 +34,9 @@ class MainApi extends Api {
     })
   }
 
-  /*** OTHER ***/
+  /*** USER DATA ***/
 
-  getUserData = () => {
+  getUserInfo = () => {
 
     return this._request('users/me', {
       method: 'GET',
@@ -55,6 +55,45 @@ class MainApi extends Api {
       body: JSON.stringify({ name, email })
     });
 
+  }
+
+  /*** MOVIES ***/
+
+  getUserMovies = () => {
+
+    return this._request('movies', {
+      method: 'GET',
+      headers: this._headers,
+      credentials: 'include',
+    });
+
+  }
+
+  saveMovie = (movie) => {
+
+    return this._request('movies', {
+      method: 'POST',
+      headers: this._headers,
+      credentials: 'include',
+      body: JSON.stringify(movie)
+    })
+
+  }
+
+  deleteMovie = (movieID) => {
+    return this._request(`movies/${movieID}`, {
+      method: 'DELETE',
+      headers: this._headers,
+      credentials: 'include',
+    });
+  }
+
+  changeSavedStatus(movieID, isSaved) { // ОСТАВИТЬ?
+    if (isSaved) {
+      return this.deleteMovie(movieID);
+    } else {
+      return this.saveMovie(movieID);
+    }
   }
 
 }
