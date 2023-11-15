@@ -1,14 +1,21 @@
 import { Link, useLocation } from 'react-router-dom';
-import { URL } from '../../utils/constants';
 import { convertDurationToText } from '../../utils/functions';
 
 import ('./MoviesCard.css');
 
-const MoviesCard = ({ movie }) => {
+const MoviesCard = ({ movie, isSaved, onSaveMovie, onDeleteMovie }) => {
 
   const locationPath = useLocation().pathname;
 
   const isBtnTypeDelete = (locationPath === '/saved-movies');
+
+  const handleSaveBtnClick = () => {
+    onSaveMovie(movie);
+  }
+
+  const handleDeleteBtnClick = () => {
+    onDeleteMovie(movie);
+  }
 
   return (
     <li className="movie">
@@ -16,7 +23,7 @@ const MoviesCard = ({ movie }) => {
       <Link to={movie.trailerLink} className="movie__image-container" target="_blank" rel="noopener noreferrer">
         <img
           className="movie__image"
-          src={`${URL.MOVIES}${movie.image.url}`}
+          src={movie.image}
           alt={`Постер фильма '${movie.nameRU}'`}
         />
       </Link>
@@ -31,10 +38,12 @@ const MoviesCard = ({ movie }) => {
             ? <button
                 className="movie__btn movie__btn_type_delete"
                 type="button"
+                onClick={handleDeleteBtnClick}
               />
             : <button
-                className="movie__btn movie__btn_type_save"
+                className={`movie__btn movie__btn_type_save ${isSaved ? 'movie__btn_type_save_active' : ''}`}
                 type="button"
+                onClick={handleSaveBtnClick}
               />
           }
 
