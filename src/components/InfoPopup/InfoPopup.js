@@ -6,20 +6,20 @@ import './InfoPopup.css';
 const InfoPopup = () => {
 
   const {
-    isInfoPopupOpened, setIsInfoPopupOpened,
-    infoPopupText, setInfoPopupText,
-    infoPopupType, setInfoPopupType,
+    infoPopup, setInfoPopup
   } = useAppContext();
 
   const handleCloseInfoPopup = useCallback(() => {
-    setIsInfoPopupOpened(false);
-    setInfoPopupText('');
-    setInfoPopupType('');
-  }, [setIsInfoPopupOpened, setInfoPopupText, setInfoPopupType])
+    setInfoPopup({
+      opened: false,
+      text: '',
+      type: '',
+    });
+  }, [setInfoPopup])
 
   useEffect(() => {
 
-    if (!isInfoPopupOpened) return;
+    if (!infoPopup.opened) return;
 
     const closeByEscape = (e) => {
       if (e.key === 'Escape') {
@@ -31,7 +31,7 @@ const InfoPopup = () => {
 
     return () => document.removeEventListener('keydown', closeByEscape);
 
-  }, [isInfoPopupOpened, handleCloseInfoPopup])
+  }, [infoPopup.opened, handleCloseInfoPopup])
 
   const handleOverlay = (e) => {
     if (e.target.classList.contains('popup_opened')) {
@@ -42,16 +42,16 @@ const InfoPopup = () => {
   return (
 
     <section
-      className={`popup ${isInfoPopupOpened ? "popup_opened" : ""}`}
+      className={`popup ${infoPopup.opened ? "popup_opened" : ""}`}
       aria-label="Окно с информационным сообщением"
       onClick={handleOverlay}
     >
 
       <div className="popup__container">
 
-        {infoPopupType && <span className={`popup__icon popup__icon_type_${infoPopupType}`} />}
+        {infoPopup.type && <span className={`popup__icon popup__icon_type_${infoPopup.type}`} />}
 
-        <p className="popup__text">{infoPopupText}</p>
+        <p className="popup__text">{infoPopup.text}</p>
 
         <button
           type="button"

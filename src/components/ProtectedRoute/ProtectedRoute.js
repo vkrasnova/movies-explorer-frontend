@@ -8,7 +8,7 @@ const ProtectedRoute = () => {
   return (
     isLoggedIn
       ? <Outlet />
-      : <Navigate to="/signin" />
+      : <Navigate to="/" />
 )}
 
 export default ProtectedRoute;

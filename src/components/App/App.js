@@ -28,11 +28,7 @@ const App = () => {
     isLoggedIn, setIsLoggedIn,
   } = useAuth();
   
-  const { 
-    setIsInfoPopupOpened,
-    setInfoPopupText,
-    setInfoPopupType,
-  } = useAppContext();
+  const { setInfoPopup } = useAppContext();
 
   const navigate = useNavigate();
   const locationPath = useLocation().pathname;
@@ -57,17 +53,11 @@ const App = () => {
         handleLogin({ email, password });
       })
       .catch((err) => {
-        setInfoPopupType('error');
-        setIsInfoPopupOpened(true);
-        if (err === 400) {
-          setInfoPopupText(STATUS_MSG.ERR_INVALID_DATA);
-          return;
-        }
-        if (err === 409) {
-          setInfoPopupText(STATUS_MSG.ERR_409);
-          return;
-        }
-        setInfoPopupText(STATUS_MSG.ERR_SIGNUP);
+        setInfoPopup({
+          opened: true,
+          text: STATUS_MSG[err] || STATUS_MSG.ERR_SIGNUP,
+          type: 'error',
+        });
       });
 
   }
@@ -79,22 +69,18 @@ const App = () => {
         setIsLoggedIn(true);
         setCurrentUser({ email, name });
         navigate('/movies', {replace: true});
-        setInfoPopupText(`${name}, ${STATUS_MSG.OK_REG}`);
-        setInfoPopupType('ok');
-        setIsInfoPopupOpened(true);
+        setInfoPopup({
+          opened: true,
+          text: STATUS_MSG.OK_SIGNIN,
+          type: 'ok',
+        });
       })
       .catch((err) => {
-        setInfoPopupType('error');
-        setIsInfoPopupOpened(true);
-        if (err === 400) {
-          setInfoPopupText(STATUS_MSG.ERR_INVALID_DATA);
-          return;
-        }
-        if (err === 401) {
-          setInfoPopupText(STATUS_MSG.ERR_401);
-          return;
-        }
-        setInfoPopupText(STATUS_MSG.ERR_SIGNIN);
+        setInfoPopup({
+          opened: true,
+          text: STATUS_MSG[err] || STATUS_MSG.ERR_SIGNIN,
+          type: 'error',
+        });
       });
   }
 
@@ -106,14 +92,16 @@ const App = () => {
         navigate('/', {replace: true});
       })
       .catch(() => {
-        setInfoPopupType('error');
-        setInfoPopupText(STATUS_MSG.ERR_LOGOUT);
-        setIsInfoPopupOpened(true);
+        setInfoPopup({
+          opened: true,
+          text: STATUS_MSG.ERR_LOGOUT,
+          type: 'error',
+        });
       });
   }
 
   const checkAuth = useCallback(() => {
-    mainApi.getUserData()
+    mainApi.getUserInfo()
     .then((user) => {
       setIsLoggedIn(true);
       setCurrentUser(user);
