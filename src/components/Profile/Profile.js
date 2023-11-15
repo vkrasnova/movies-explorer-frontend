@@ -78,7 +78,7 @@ const Profile = ({ onSignOut }) => {
           Привет, {currentUser.name}!
         </h1>
 
-        <form className="profile__info" onSubmit={handleSubmitForm} isValid={isValid}>
+        <form className="profile__info" onSubmit={handleSubmitForm}>
 
           <div className={profileFieldsClassName} onClick={hideStatusMessage}>
 
